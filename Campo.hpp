@@ -6,7 +6,6 @@ using std::string;
 using std::vector;
 
 class Campo {
-	//stricadena[30];
 	string nombre;
 	string tipo;
 	int size;
@@ -29,6 +28,4 @@ public:
 	void setSize(int size);
 	void setSize_dec(int size_dec);
 	void setKey(bool key);
-	//void CrearCampos(vector<Campo>& campos);
-	//void removeCampo(int posicion); colocar en la clase registro
 };

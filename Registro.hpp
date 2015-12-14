@@ -10,12 +10,10 @@ class Registro{
 	vector<string> lista_campos;
 	int size;
 	string lista;
-	//char marca;
 
 public:
 	Registro();
 	Registro(string lista);
-	//Registro(int size);
 	Registro(const Registro&);
 	~Registro();
 	const vector<string> getLista()const;

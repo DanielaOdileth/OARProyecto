@@ -13,7 +13,6 @@ class Indice{
 public:
 	Indice();
 	Indice(Nodo n, Nodo next);
-	//Registro(int size);
 	Indice(const Indice&);
 	~Indice();
 	const Nodo getN()const;

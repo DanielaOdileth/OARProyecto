@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <vector>
-//#include "AvailList.hpp"
 #include "Indice.hpp"
 #include "Header.hpp"
 #include "Registro.hpp"
@@ -13,9 +12,7 @@ using std::vector;
 class Archivo{
 	vector<string> lista_registro;
 	int availList[];
-	//Indice indices;
 	Arbol arbol;
-	//AvailList availList;
 	Header header;
 	Indice indice_a;
 	string nombre;

@@ -18,6 +18,5 @@ public:
 	const int getLlave()const;
 	void setRRN(int RRN);
 	void setLlave(int llave);
-	//void setNodo(Nodo nodo);
 	string toString()const;
 };

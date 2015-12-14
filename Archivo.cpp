@@ -9,13 +9,9 @@ Archivo::Archivo(){
 
 }
 Archivo::Archivo(vector<string> lista_registro, int avalList[], Arbol arbol, Header header, Indice a, string nombre){
-	//this->header = header;
-	//this->availList = availList;
 	this->nombre = nombre;
 }
 Archivo::Archivo(const Archivo& other){
-	//header = other.header;
-	//availList = other.availList;
 	nombre = other.nombre;
 }
 Archivo::~Archivo(){
@@ -32,10 +28,3 @@ const Indice Archivo::getIndice(){
 const string Archivo::getNombre(){
 	return nombre;
 }
-/*const Header Archivo::getHeader()const{
-	return header;
-}
-	
-const AvailList Archivo::getAvailList()const{
-	return availList;
-}*/

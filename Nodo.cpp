@@ -6,8 +6,8 @@
 using namespace std;
 
 Nodo::Nodo(){
-	RRN = 0;
-	llave = 0;
+	RRN = -1;
+	llave = -1;
 }
 
 Nodo::Nodo(int RRN, int llave){
@@ -38,11 +38,3 @@ void Nodo::setRRN(int RRN){
 void Nodo::setLlave(int llave){
 	this->llave = llave;
 }
-/*void Nodo::setNodo(Nodo nodo){
-	this->nodo = nodo;
-}*/
-/*string toString()const{
-	stringstream s;
-	s << RRN << "  " << llave << "\n";
-	return s.str();
-}*/

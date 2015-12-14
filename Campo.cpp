@@ -70,7 +70,3 @@ void Campo::setSize_dec(int size_dec){
 void Campo::setKey(bool key){
 	this->key = key;
 }
-
-/*void Campo::removeCampo(int posicion){
-	datos_campo.erase(datos_campo.begin()+posicion);
-} colocar en la clase de registro*/

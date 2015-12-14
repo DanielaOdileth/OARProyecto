@@ -18,9 +18,7 @@ public:
 	~Header();
 	const vector<Campo> getLista_Campo()const;
 	const string getNombre_File()const;
-	//const int getSize_File() const;
 	void setNombre_File(string nombre_file);
-	//void setSize_File(int size_file);
 	void setLista_Campos(vector<Campo>& lista_campo);
 	string toString()const;
 };

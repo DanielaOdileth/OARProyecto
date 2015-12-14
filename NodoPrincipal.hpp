@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <vector>
-//#include "NodoA.hpp"
 #include "Nodo.hpp"
 
 using std::string;
