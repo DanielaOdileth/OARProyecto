@@ -8,7 +8,7 @@ using std::vector;
 Archivo::Archivo(){
 
 }
-Archivo::Archivo(vector<string> lista_registro, int avalList[], Header header, Indice a, string nombre){
+Archivo::Archivo(vector<string> lista_registro, int avalList[], Arbol arbol, Header header, Indice a, string nombre){
 	//this->header = header;
 	//this->availList = availList;
 	this->nombre = nombre;

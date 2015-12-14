@@ -48,6 +48,7 @@ int main(int argc, char* argv[]){
 	scanw("%d", &opcion);
 
 	if(opcion == 1){
+		char nombre_ar[30];
 		int opcion2;
 		clear();
 		refresh();
@@ -67,28 +68,25 @@ int main(int argc, char* argv[]){
 		printw("3. Mas opciones \n");
 		printw("4. Salir \n");
 
-		//IMPRIMIR LOS NOMBRES DE LOS CAMPOS EN FORMA BONITA
 		move(4, 4);
 		for(int i = 0; i < campos.size(); i++){
-			printw("Tamaño %s \n", campos[i].getNombre().c_str());
-			//mvprintw(21, 10, "%s", (campos[i].getTipo()).c_str());
+			printw("%s " , campos[i].getNombre().c_str());
 		}
+		printw(" \n");
 		scanw("%d", &opcion2);
 
 		if(opcion2 == 1){
-			//Validar los registros que el usuario ingresa
 			int rsp;
 			do{	
 				nuevo_indice = ValidarRegistros(campos, registros, c, nuevo_indice, nuevo_arbol);
-				printf("Desea ingresar mas registros 1.S/2.N \n");
+				printw("Desea ingresar mas registros 1.S/2.N \n");
 				scanw("%d", &rsp);
 				if(rsp == 2){
-					char nombre_ar[30];
-					printf("Ingrese el nombre del Archivo \n");
+					printw("Ingrese el nombre del Archivo \n");
 					getstr(nombre_ar);
 					//Guardar el archivo
 					CrearArchivos(nombre_ar, registros, c);
-					printw("Su archivo fue creado");
+					printw("Su archivo fue creado \n");
 					scanw("%d", &opcion2);
 
 					header = Header(nombre_ar, campos);
@@ -100,7 +98,7 @@ int main(int argc, char* argv[]){
 			char nombre_ar[30];
 			printf("Ingrese el nombre del Archivo \n");
 			getstr(nombre_ar);
-			nuevo = Archivo(c, lista, header, nuevo_indice, nombre_ar);
+			nuevo = Archivo(c, lista, nuevo_arbol, header, nuevo_indice, nombre_ar);
 
 		}
 		if(opcion2 == 3){
@@ -213,22 +211,20 @@ int main(int argc, char* argv[]){
 						printw(registros[i].toString(c).c_str(), "\n");
 					}
 					scanw("%d", &posicion);
-					printw("Antes del buscar");
 					n = nuevo_arbol.Buscar(nuevo_arbol, posicion);
 
-					printw("SALIO DEL BUSCAR");
-					
+					//ValidarRegistros(campos, registros, c, nuevo_indice, nuevo_arbol);
+
+					//n.setLlave();	
 				}
 				if(r == 2){
 					Nodo n; 
 					int p;
 					int cantidad = 0;
 					int lista[cantidad];
-					//Montrarle al usuario los registros bonitos
 					int posicion;
 					printw("Ingrese el valor de la llavea eliminar \n");
 					for(int i = 0; i< c.size(); i++){
-						//AQUI MODIFIQUE
 							printw("%s", c[i].c_str(), "\n");
 					}
 					printw("%d \n", c.size());
@@ -259,21 +255,16 @@ int main(int argc, char* argv[]){
 					}
 
 					//CUANDO EL USUARIO SALGA DEL PROGRAMA CREEARA EL ARCHIVO
-
-					//printw("%d \n", registros.size());
-					//registros[posicion].setElemento(posicion, final);
-
-						//availList.push(posicion);
-					//availList.push(posicion, cantidad, lista[cantidad]);
-
 					
 				}
 			}
 			if(respuesta == 3){
+				CrearArchivos(nombre_ar, registros, c);
 				exit(EXIT_FAILURE);
 			}
 		}
 		if(opcion2 == 4){
+			CrearArchivos(nombre_ar, registros, c);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -322,7 +313,6 @@ int main(int argc, char* argv[]){
 				scanw("%d", &r);
 
 				if(r ==1){
-					//PENDIENTE
 					Nodo n;
 					int posicion;
 					printw("Ingrese la posicion a Modificar \n");
@@ -330,24 +320,18 @@ int main(int argc, char* argv[]){
 						printw(registros[i].toString(c).c_str(), "\n");
 					}
 					scanw("%d", &posicion);
-					printw("Antes del buscar");
 					n = nuevo_arbol.Buscar(nuevo_arbol, posicion);
-
-					printw("SALIO DEL BUSCAR");
 				}
 
 				if(r == 2){
-					//Agregar aqui
 					Nodo n; 
 					int p;
 					int cantidad = 0;
 					int lista[cantidad];
-					//Montrarle al usuario los registros bonitos
 					int posicion;
 					printw("Ingrese el valor de la llavea eliminar \n");
 					for(int i = 0; i< c.size(); i++){
-						//AQUI MODIFIQUE
-							printw("%s", c[i].c_str(), "\n");
+						printw("%s", c[i].c_str(), "\n");
 					}
 					printw("%d \n", c.size());
 					scanw("%d",&posicion);
@@ -385,10 +369,70 @@ int main(int argc, char* argv[]){
 				printw("1. Modificar \n");
 				printw("2. Eliminar \n");
 				scanw("%d", &r);
+
+				if(r == 1){
+					//PENDIENTE
+					Nodo n;
+					int posicion;
+					printw("Ingrese la llave a Modificar \n");
+					for(int i = 0; i < registros.size(); i++){
+						printw(registros[i].toString(c).c_str(), "\n");
+					}
+					scanw("%d", &posicion);
+					n = nuevo_arbol.Buscar(nuevo_arbol, posicion);
+
+					//ValidarRegistros(campos, registros, c, nuevo_indice, nuevo_arbol);
+
+					//n.setLlave();
+				}
+				if(r == 2){
+					Nodo n; 
+					int p;
+					int cantidad = 0;
+					int lista[cantidad];
+					int posicion;
+					printw("Ingrese el valor de la llavea eliminar \n");
+					for(int i = 0; i< c.size(); i++){
+							printw("%s", c[i].c_str(), "\n");
+					}
+					printw("%d \n", c.size());
+					scanw("%d",&posicion);
+					n = nuevo_arbol.Buscar(nuevo_arbol, posicion);
+					p = -1 * n.getLlave();
+					n.setLlave(p);
+
+					lista[cantidad] = posicion;
+					cantidad++;
+
+					string m = "*";
+					string final;
+					final = m+=c[posicion];
+					c.push_back(final);
+
+					Nodo temp;
+					temp = nuevo_indice.getN();
+
+					while(temp.getLlave() != -1){
+						if(temp.getLlave() == posicion){
+							temp.setLlave(-2);
+							printw("%s", "Su registros fue eliminado");
+
+						}else{
+							temp = nuevo_indice.getNext();
+						}
+					}
+
+					//CUANDO EL USUARIO SALGA DEL PROGRAMA CREEARA EL ARCHIVO
+					
+				}
+				if(rsp == 3){
+				exit(EXIT_FAILURE);
+				}
 			}
-		}
-		if(rsp == 3){
-			exit(EXIT_FAILURE);
+			if(respuesta == 3){
+				CrearArchivos(nombre, registros, c);
+				exit(EXIT_FAILURE);
+			}
 		}
 
 	}if (opcion == 3){
@@ -462,8 +506,8 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 			printw("Ingrese %s \n", campos[i].getNombre().c_str());
 			getstr(dato);
 			lista_datos+=dato;
-			printw("%d", campos[i].getSize());
-			printw("%c", dato);
+			//printw("%d", campos[i].getSize());
+			//printw("%c", dato);
 			c.push_back(dato);
 
 		}
@@ -475,7 +519,7 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 				m = -1;
 				printw("Ingrese %s \n", campos[i].getNombre().c_str());
 				scanw("%d", dato);
-				getstr(record);
+				//getstr(record);
 				int m;
 				m = pow(10, campos[i].getSize());
 				double lim;
@@ -490,14 +534,14 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 					lim = ( (m-1)*(1/(pow(10, total))));
 				}
 
-				if(dato < lim){
+				/*if(dato < lim){
 					printw("Tu dato no es valido para este campo \n");
-				}else{
+				}else{*/
 					m = 0;
 					lista_datos+=record;
-					sprintf(record, "%.2f", dato);
+					sprintf(record, "%2.f", dato);
 					c.push_back(record);
-				}
+				//}
 			}while(m == -1);
 		}
 		if(campos[i].getTipo() == "Int"){
@@ -517,6 +561,8 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 					printf("Tu dato no es valido para este campo \n");
 				}else{
 					m = 0;
+					char d[6];
+					char r[6];
 					sprintf(record, "%d", dato);
 					lista_datos+=record;
 					c.push_back(record);
@@ -528,11 +574,17 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 
 						//Haciendo el archivo
 						archivo_indice = fopen("Indice.txt", "w");
-						//fputc(n, archivo_indice);
+						sprintf(r, "%d", n.getRRN());
+						sprintf(d, "%d", n.getLlave());
+
+						for(int j = 0; j < 6; j++){
+							fputc(d[j], archivo_indice);
+							fputc(r[j], archivo_indice);	
+						}
 
 						fclose(archivo_indice);
 
-						//AQUI TENGO QUE COLOCAR EL ARBOL;
+						//Arbol
 						nuevo_arbol.Agregar(nuevo_arbol, n);
 					}
 				}
@@ -540,9 +592,7 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 
 		}
 	}
-	//Agregar a la lista de registo;
 	Indice indice_nuevo;
-	printw("%s", lista_datos.c_str());
 
 	return indice_nuevo;
 }
@@ -567,6 +617,7 @@ void CrearArchivos(string nombre_archivo, vector<Registro>& registros, vector<st
 				j = m.size();
 			}
 		}
+		fputc('\n',nuevo_archivo);
 	}
 
 	fclose(nuevo_archivo);
@@ -580,11 +631,9 @@ void ImprimirArchivo(string nombre_abrir){
 	
 	if (nuevo_archivo == NULL){
 
-		printf("\n Error de apertura del archivo. \n\n");
-
      }else{
         
-		printf("\nEl contenido del archivo de prueba es \n\n");
+		printf("\nEl contenido del archivo es\n\n");
 	
 		 while (feof(nuevo_archivo) == 0){
 			caracter = fgetc(nuevo_archivo);
