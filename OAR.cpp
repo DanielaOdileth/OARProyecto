@@ -115,7 +115,6 @@ int main(int argc, char* argv[]){
 
 			if(respuesta == 1){
 				int r;
-				//printw("1. Agregar \n");
 				printw("1. Modificar \n");
 				printw("2. Eliminar \n");
 				scanw("%d", &r);
@@ -161,7 +160,6 @@ int main(int argc, char* argv[]){
 					}
 				}
 
-			 	//AQUI
 			 	clear();
 				refresh();
 				printw("1. Modificar \n");
@@ -201,7 +199,6 @@ int main(int argc, char* argv[]){
 			}
 			if(respuesta == 2){
 				int r;
-				//printw("1. Agregar \n");
 				printw("1. Modificar \n");
 				printw("2. Eliminar \n");
 				printw("3. Salir \n");
@@ -211,8 +208,7 @@ int main(int argc, char* argv[]){
 					//PENDIENTE
 					Nodo n;
 					int posicion;
-					printw("HOLAAAA");
-					printw("Ingrese la posicion a Modificar \n");
+					printw("Ingrese la llave a Modificar \n");
 					for(int i = 0; i < registros.size(); i++){
 						printw(registros[i].toString(c).c_str(), "\n");
 					}
@@ -237,27 +233,16 @@ int main(int argc, char* argv[]){
 					}
 					printw("%d \n", c.size());
 					scanw("%d",&posicion);
-					//getstr(posicion);
 					n = nuevo_arbol.Buscar(nuevo_arbol, posicion);
 					p = -1 * n.getLlave();
 					n.setLlave(p);
 
-
 					lista[cantidad] = posicion;
 					cantidad++;
 
-					/*for(int i = 0; i < c.size(); i++){
-						if(i == posicion){
-							//IMPRIME EL DE LA POSICION
-							refresh();
-							printw("%s", c[i].c_str(), "\n");
-						}
-					}*/
 					string m = "*";
 					string final;
 					final = m+=c[posicion];
-					//strcat(m, lista[posicion]); 
-					//c.erase(c.begin()+posicion);
 					c.push_back(final);
 
 					Nodo temp;
@@ -332,7 +317,6 @@ int main(int argc, char* argv[]){
 
 			if(respuesta == 1){
 				int r;
-				//printw("1. Agregar \n");
 				printw("1. Modificar \n");
 				printw("2. Eliminar \n");
 				scanw("%d", &r);
@@ -341,7 +325,6 @@ int main(int argc, char* argv[]){
 					//PENDIENTE
 					Nodo n;
 					int posicion;
-					printw("HOLAAAA");
 					printw("Ingrese la posicion a Modificar \n");
 					for(int i = 0; i < registros.size(); i++){
 						printw(registros[i].toString(c).c_str(), "\n");
@@ -354,12 +337,51 @@ int main(int argc, char* argv[]){
 				}
 
 				if(r == 2){
+					//Agregar aqui
+					Nodo n; 
+					int p;
+					int cantidad = 0;
+					int lista[cantidad];
+					//Montrarle al usuario los registros bonitos
+					int posicion;
+					printw("Ingrese el valor de la llavea eliminar \n");
+					for(int i = 0; i< c.size(); i++){
+						//AQUI MODIFIQUE
+							printw("%s", c[i].c_str(), "\n");
+					}
+					printw("%d \n", c.size());
+					scanw("%d",&posicion);
+					n = nuevo_arbol.Buscar(nuevo_arbol, posicion);
+					p = -1 * n.getLlave();
+					n.setLlave(p);
 
+					lista[cantidad] = posicion;
+					cantidad++;
+
+					string m = "*";
+					string final;
+					final = m+=c[posicion];
+					c.push_back(final);
+
+					Nodo temp;
+					temp = nuevo_indice.getN();
+
+					while(temp.getLlave() != -1){
+						if(temp.getLlave() == posicion){
+							temp.setLlave(-2);
+							printw("%s", "Su registros fue eliminado");
+
+						}else{
+							temp = nuevo_indice.getNext();
+						}
+					}
+
+					//CUANDO EL USUARIO SALGA DEL PROGRAMA CREEARA EL ARCHIVO
 				}
+
 			}
 			if(respuesta == 2){
 				int r;
-				//printw("1. Agregar \n");
 				printw("1. Modificar \n");
 				printw("2. Eliminar \n");
 				scanw("%d", &r);
@@ -380,16 +402,12 @@ int main(int argc, char* argv[]){
 }
 void CrearCampos(vector<Campo>& campos){
 		char nombre_campo[30];
-		//char nc[30];
 		string tipo_campo;
 		int tamano;
 		int decimales;
 		bool key;
 
 		printw("Nombre del Campo: \n");
-		//scanw("%s", nombre_campo);
-		//nombre_campo = "Hola";
-		//getstr(nc);
 		getstr(nombre_campo);
 		printw("Tipo del campo: \n");
 		int opcion_t;
@@ -397,9 +415,6 @@ void CrearCampos(vector<Campo>& campos){
 		printw("2. Int \n");
 		printw("3. Double \n");
 		scanw("%d", &opcion_t);
-		//printw("Me imprimir la variable nc  %s \n", nombre_campo);
-		//scanw("%d", &tipo_campo);
-		//getstr(tipo_campo);
 		if(opcion_t == 1){
 			tipo_campo = "String";
 		}
@@ -411,7 +426,6 @@ void CrearCampos(vector<Campo>& campos){
 		}
 		printw("Tamaño del campo: \n");
 		scanw("%d", &tamano);
-		//tamano = "string";
 		if(tipo_campo == "Double"){
 			printw("Cantidad de decimales: \n");
 			scanw("%d", &decimales);
@@ -428,8 +442,6 @@ void CrearCampos(vector<Campo>& campos){
 			}else{
 				key = true;
 			}
-
-			//campos.push_back(Campo(nombre_campo, tipo_campo, tamano, decimales, key));
 		}else{
 			key = false;
 		}
@@ -439,7 +451,7 @@ void CrearCampos(vector<Campo>& campos){
 
 Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vector<string>& c, Indice nuevo_indice, Arbol nuevo_arbol){
 	string lista_datos;
-	//Registro r;
+	FILE *archivo_indice;
 	lista_datos = "";
 	int cantidad = 0;
 	int llave;
@@ -453,7 +465,6 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 			printw("%d", campos[i].getSize());
 			printw("%c", dato);
 			c.push_back(dato);
-			//r.getLista().push_back(dato);
 
 		}
 		if(campos[i].getTipo() == "Double"){
@@ -467,7 +478,6 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 				getstr(record);
 				int m;
 				m = pow(10, campos[i].getSize());
-				//validar los decimales;
 				double lim;
 				int n;
 				int r;
@@ -478,21 +488,15 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 					r = campos[i].getSize() - campos[i].getSize_dec();
 					total = n-(n-r);
 					lim = ( (m-1)*(1/(pow(10, total))));
-				}else{
-					//r = campos[i].getSize() - campos[i].getSize_dec();
-					//lim = ( (m-1)*(1/(pow(10,r))) );
 				}
 
-				if(dato > lim){
+				if(dato < lim){
 					printw("Tu dato no es valido para este campo \n");
 				}else{
 					m = 0;
 					lista_datos+=record;
 					sprintf(record, "%.2f", dato);
 					c.push_back(record);
-					if(campos[i].getKey() == TRUE){
-						//l((lave = record;
-					}
 				}
 			}while(m == -1);
 		}
@@ -502,8 +506,6 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 
 			do{
 				int dato;
-	
-			
 				m = -1;
 				printw("Ingrese %s \n", campos[i].getNombre().c_str());
 				scanw("%d", &dato);
@@ -516,15 +518,19 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 				}else{
 					m = 0;
 					sprintf(record, "%d", dato);
-					//record = dato.c_str();
 					lista_datos+=record;
 					c.push_back(record);
 					if(campos[i].getKey() == true){
 						//AQUI HACE EL INDICE
 						Nodo n;
 						n = Nodo(c.size(), dato);
-						
 						nuevo_indice = Indice(n, Nodo());
+
+						//Haciendo el archivo
+						archivo_indice = fopen("Indice.txt", "w");
+						//fputc(n, archivo_indice);
+
+						fclose(archivo_indice);
 
 						//AQUI TENGO QUE COLOCAR EL ARBOL;
 						nuevo_arbol.Agregar(nuevo_arbol, n);
@@ -532,22 +538,10 @@ Indice ValidarRegistros(vector<Campo>& campos, vector<Registro>& registros, vect
 				}
 			}while(m == -1);
 
-		}/*else{
-			printw("Si entra pero no valida bien los string \n");
-		}*/
-		//cantidad++;
+		}
 	}
 	//Agregar a la lista de registo;
-	printw("11111111111111111111111 \n");
 	Indice indice_nuevo;
-	//vector<Nodo> lista_nodos;
-	//registros.push_back(Registro(lista_datos)); //Imprimir los registros en la terminal
-	//Nodo nodo_n;
-	printw("22222222222222222222 \n");
-	//nodo_n = Nodo(registros.size(), llave);
-	//lista_nodos.push_back(nodo_n);
-	//indice_nuevo = Indice(lista_nodos);
-	printw("SHIT");
 	printw("%s", lista_datos.c_str());
 
 	return indice_nuevo;
@@ -560,27 +554,6 @@ void CrearArchivos(string nombre_archivo, vector<Registro>& registros, vector<st
 	FILE *nuevo_archivo;
 	nuevo_archivo = fopen(nombre_archivo.c_str(), "w");
 
-	printw("ANtes del for \n");
-
-
-	/*for(int i = 0; i < registros.size(); i++){
-		printw("Entro al for \n");
-		//for(int j = 0; j < registros[i].getValor().size(); i++){
-			//printw("Segundo for \n");
-			//p = c[i].c_str();
-		//m = registros[i].getLista();
-
-		p = registros[i].getValor()[i];
-			//if(p != '*'){
-				//printw("%s \n", c[i].c_str());
-				printw("size %d \n", registros.size());
-				fputc(p, nuevo_archivo);
-				printw("Se supone que leyo");
-			//}
-		//}
-		//m =registros[i].getValor();
-		//c = m.c_str();
-	}*/
 	for(int i = 0; i < c.size(); i++){
 		m = c[i].c_str();
 
