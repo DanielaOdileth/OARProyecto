@@ -8,7 +8,6 @@ using std::string;
 
 AvailList::AvailList(){
 	referencia = -1;
-	//cantidad = 0;
 }
 
 AvailList::AvailList(int referencia){
