@@ -18,5 +18,5 @@ public:
 	void setPadre(NodoPrincipal nuevo);
 	void setHijos(NodoA nhijos);
 	void Agregar(Arbol arbol, Nodo nuevo);
-	Nodo Buscar(Arbol arbol, int buscar);
+	Nodo Buscar(Arbol arbol, int buscar, int cantidad);
 };

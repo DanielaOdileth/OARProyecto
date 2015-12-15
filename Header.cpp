@@ -45,3 +45,10 @@ string Header::toString()const{
 	}
 	return s.str();
 }
+
+string Header::Prueba(){
+	stringstream s;
+	s << "PersonId:" << "[" << 6 << "]" << "PersonName:" << "[" << 20 << "]" << "PersonAge:" << "[" << 3<<"]";
+
+	return s.str();
+}

@@ -90,10 +90,9 @@ void Arbol::Agregar(Arbol arbol, Nodo nuevo){
 		cantidad = 0;
 	}
 }
-Nodo Arbol::Buscar(Arbol arbol, int buscar){
-	int b, cantidad;
+Nodo Arbol::Buscar(Arbol arbol, int buscar,int cantidad){
+	int b;
 	b =0;
-	cantidad = 0;
 
 	while(cantidad < 6){
 		while(arbol.getPadre().getNodos(cantidad + 1).getLlave() != -1){

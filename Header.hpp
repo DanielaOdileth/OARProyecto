@@ -21,4 +21,5 @@ public:
 	void setNombre_File(string nombre_file);
 	void setLista_Campos(vector<Campo>& lista_campo);
 	string toString()const;
+	string Prueba();
 };
